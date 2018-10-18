@@ -13,6 +13,7 @@ module Players
     end # end #move(board)
 
     def integer_move(board) # => 0-based board index
+      binding.pry
       if !board.taken?(MIDDLE) # move in the middle if middle is free
         MIDDLE
       elsif free_corner = CORNERS.find { |corner| !board.taken?(corner) }
