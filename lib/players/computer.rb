@@ -1,7 +1,11 @@
-require "pry"
+
+require 'pry'
+
+
 module Players
 
   class Computer < Player
+
 
   # 0-indexed arrays
   CORNERS = [0,2,6,8] # probably belongs in Game or Board, technically
