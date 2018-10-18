@@ -54,7 +54,7 @@ class Game
     else
       turn
     end
-      display
+      board.display
   end
 
   def play
