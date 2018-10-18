@@ -1,15 +1,11 @@
-
-require 'pry'
-
-
+require "pry"
 module Players
 
   class Computer < Player
 
-
-  # 0-indexed arrays
-  CORNERS = [0,2,6,8] # probably belongs in Game or Board, technically
-  MIDDLE = 4
+    # 0-indexed arrays
+    CORNERS = [0,2,6,8]
+    MIDDLE = 4
 
 
     def move(board) # => 1-indexed board position
@@ -17,7 +13,6 @@ module Players
     end # end #move(board)
 
     def integer_move(board) # => 0-based board index
-      binding.pry
       if !board.taken?(MIDDLE) # move in the middle if middle is free
         MIDDLE
       elsif free_corner = CORNERS.find { |corner| !board.taken?(corner) }
@@ -27,7 +22,7 @@ module Players
       else
         1
       end # end if
-    end # end integer_move(board)
-  end # end class
+    end # end #integer_move(board)
 
+  end # end class
 end # end module
