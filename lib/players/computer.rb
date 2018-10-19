@@ -55,7 +55,8 @@ module Players
     # Should be a very easy fix, but I've left my wife by her lonesome for long enough.
     def possible_any_win
       Game.win_combos.find { |combo|
-        combo.map {|spot| token_at(spot)}.uniq.count == 2 # one almost-winner, and one blank
+        tokens = combo.map {|spot| token_at(spot)}
+        tokens.count { |s| s == "X" } == 2 || tokens.count { |s| s == "O" } == 2
         }
     end
 
