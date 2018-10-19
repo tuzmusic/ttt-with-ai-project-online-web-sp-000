@@ -57,9 +57,9 @@ module Players
       opponent_token = self.token == "X" ? "O" : "X"
       Game.win_combos.find { |combo|
         tokens = combo.map {|spot| token_at(spot)}
-        could_win = tokens.count { |s| s == token } == 2
-        could_lose = tokens.count { |s| s == opponent_token } == 2
-        (could_win || could_lose) && combo.any? { |spot| !taken?(spot) }
+        tokens.count { |s| s == token } == 2 ||
+        tokens.count { |s| s == opponent_token } == 2 && 
+        combo.any? { |spot| !taken?(spot) }
         }
     end
 
