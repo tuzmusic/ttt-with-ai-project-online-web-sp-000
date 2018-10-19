@@ -96,7 +96,7 @@ module Players
       if !taken?(MIDDLE)
         MIDDLE
       elsif possible_any_win
-        # binding.pry
+        binding.pry
         open_spot(possible_any_win)
       # elsif about_to_win
       #   about_to_win
@@ -106,6 +106,7 @@ module Players
         binding.pry
         free_corner
       else
+        binding.pry
         first_empty_spot
       end # end if
     end # end #integer_move(board)
