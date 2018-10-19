@@ -31,28 +31,9 @@ module Players
       combo.find { |spot| !taken?(spot) }
     end
 
-    # NOTE: Could refactor following 2 methods into one.
+  
+  
 
-    def possible_win # => winning combo
-      Game.win_combos.find { |c|
-        could_win = c.select {|spot| token_at(spot) == token}.count == 2
-        spots_free = !c.all? { |spot| taken?(spot) }
-        could_win && spots_free
-      }
-    end
-
-    def possible_opponent_win # => endangering combo
-      opponent_token = self.token == "X" ? "O" : "X"
-      Game.win_combos.find { |c|
-        opp_2_spaces = c.select {|spot| token_at(spot) == opponent_token}.count == 2
-        spots_free = !c.all? { |spot| taken?(spot) }
-        opp_2_spaces && spots_free
-      }
-    end
-
-    # NOTE: There's something wrong either with this method, which, when all done correctly, should be able to replace the about_to_win and about_to_lose methods (and their implementations).
-    # The problem is that it currently returns true not just for ["X","X"," "] but also for [" ", " ", " "].
-    # Should be a very easy fix, but I've left my wife by her lonesome for long enough.
     def possible_any_win # => winning combo
       opponent_token = self.token == "X" ? "O" : "X"
       Game.win_combos.find { |combo|
@@ -63,18 +44,7 @@ module Players
         }
     end
 
-    def about_to_win # => index for winning spot
-      if possible_win
-        open_spot(possible_win)
-      end
-    end
-
-    def about_to_lose # => index for spot to block
-      if possible_opponent_win
-        open_spot(possible_opponent_win)
-      end
-    end
-
+    
     # exec methods
     def move(board) # => 1-indexed board position
       "#{integer_move(board)+1}"
@@ -113,3 +83,38 @@ module Players
 
   end # end class
 end # end module
+
+=begin
+  METHOD ARCHIVE
+
+  def possible_win # => winning combo
+    Game.win_combos.find { |c|
+      could_win = c.select {|spot| token_at(spot) == token}.count == 2
+      spots_free = !c.all? { |spot| taken?(spot) }
+      could_win && spots_free
+    }
+  end
+
+  def possible_opponent_win # => endangering combo
+    opponent_token = self.token == "X" ? "O" : "X"
+    Game.win_combos.find { |c|
+      opp_2_spaces = c.select {|spot| token_at(spot) == opponent_token}.count == 2
+      spots_free = !c.all? { |spot| taken?(spot) }
+      opp_2_spaces && spots_free
+    }
+  end
+
+  def about_to_win # => index for winning spot
+    if possible_win
+      open_spot(possible_win)
+    end
+  end
+
+  def about_to_lose # => index for spot to block
+    if possible_opponent_win
+      open_spot(possible_opponent_win)
+    end
+  end
+
+
+=end
