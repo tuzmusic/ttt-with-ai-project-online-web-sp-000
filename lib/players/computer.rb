@@ -65,7 +65,7 @@ module Players
       @board = board
 
       !taken?(MIDDLE) ? MIDDLE :
-        possible_any_win ? possible_any_win :
+        possible_any_win ? open_spot(possible_any_win) :
         free_corner ? free_corner :
         first_empty_spot
 
