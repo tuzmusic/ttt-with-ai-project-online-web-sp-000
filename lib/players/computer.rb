@@ -96,7 +96,7 @@ module Players
       if !taken?(MIDDLE)
         MIDDLE
       elsif possible_any_win
-        pry
+        # binding.pry
         open_spot(possible_any_win)
       # elsif about_to_win
       #   about_to_win
