@@ -31,8 +31,8 @@ module Players
       combo.find { |spot| !taken?(spot) }
     end
 
-  
-  
+
+    # NOTE: This works, BUT it doesn't prioritize winning over losing, or vice versa. It finds the FIRST combo in the list that could lose or could win, and goes there. 
 
     def possible_any_win # => winning combo
       opponent_token = self.token == "X" ? "O" : "X"
@@ -44,7 +44,7 @@ module Players
         }
     end
 
-    
+
     # exec methods
     def move(board) # => 1-indexed board position
       "#{integer_move(board)+1}"
@@ -68,10 +68,6 @@ module Players
       elsif possible_any_win
         # binding.pry
         open_spot(possible_any_win)
-      # elsif about_to_win
-      #   about_to_win
-      # elsif about_to_lose
-      #   about_to_lose
       elsif free_corner
         # binding.pry
         free_corner
