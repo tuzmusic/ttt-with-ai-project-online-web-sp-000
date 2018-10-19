@@ -53,7 +53,7 @@ module Players
     # NOTE: There's something wrong either with this method, which, when all done correctly, should be able to replace the about_to_win and about_to_lose methods (and their implementations).
     # The problem is that it currently returns true not just for ["X","X"," "] but also for [" ", " ", " "].
     # Should be a very easy fix, but I've left my wife by her lonesome for long enough.
-    def possible_any_win
+    def possible_any_win # => winning combo
       opponent_token = self.token == "X" ? "O" : "X"
       Game.win_combos.find { |combo|
         tokens = combo.map {|spot| token_at(spot)}
