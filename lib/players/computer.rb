@@ -19,8 +19,8 @@ module Players
       @board.taken?(num+1)
     end
 
-    def first_empty_spot
-      (0..8).find {|i| !taken?(i)} # take the first empty spot
+    def first_empty_spot # in the whole board
+      (0..8).find {|i| !taken?(i)}
     end
 
     def free_corner
