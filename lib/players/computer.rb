@@ -103,6 +103,7 @@ module Players
       # elsif about_to_lose
       #   about_to_lose
       elsif free_corner
+        binding.pry
         free_corner
       else
         first_empty_spot
