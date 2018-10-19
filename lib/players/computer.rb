@@ -91,12 +91,21 @@ module Players
       @board = board
       if !taken?(MIDDLE)
         MIDDLE
+<<<<<<< HEAD
       # elsif possible_any_win
       #   open_spot(possible_any_win)
       elsif about_to_win
         about_to_win
       elsif about_to_lose
         about_to_lose
+=======
+      elsif possible_any_win
+        open_spot(possible_any_win)
+      # elsif about_to_win
+      #   about_to_win
+      # elsif about_to_lose
+      #   about_to_lose
+>>>>>>> dbfc3752617da3c2fa6ad16dbbc77e394d3e2ced
       elsif free_corner
         free_corner
       else
