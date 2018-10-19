@@ -10,7 +10,7 @@ module Players
     # helper variables
     attr_reader :board
 
-    #helper methods
+    # helper methods
     def token_at(num)
       @board.cells[num]
     end
@@ -31,7 +31,6 @@ module Players
       combo.find { |spot| !taken?(spot) }
     end
 
-
     # NOTE: This works, BUT it doesn't prioritize winning over blocking, or vice versa. It finds the FIRST combo in the list that could lose or could win, and goes there.
     # So this could be somehow rewritten/expanded to find the first winning combo, and if not, find the first losing combo.
     # That would, of course, /almost/ get us back where we started with separate could_win and could_lose methods (see method archive at bottom of file).
@@ -45,7 +44,6 @@ module Players
         (could_win || could_lose) && open_spot(combo)
         }
     end
-
 
     # exec methods
     def move(board) # => 1-indexed board position
